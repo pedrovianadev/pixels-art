@@ -42,5 +42,12 @@
 }
 
 #pixel-board{
-    padding: 50px;
+    width: 250px;
+    height: 250px;
+    margin: auto;
+}
+
+.pixel{
+    display: inline-block;
+    
 }
