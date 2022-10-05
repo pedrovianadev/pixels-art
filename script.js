@@ -1,3 +1,4 @@
+
 function randomColor () {
     let r = Math.floor(Math.random() * 256);
     let g = Math.floor(Math.random() * 256);
@@ -14,7 +15,8 @@ function changeColor () {
 
 function clickButton() {
     const button = document.getElementById('button-random-color');
-    button.addEventListener('click', changeColor)
+    button.addEventListener('click', () => {
+        changeColor(true)
+    })
 }
-
 clickButton();
