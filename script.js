@@ -1,14 +1,17 @@
+// 
+let saveColors = [];
+
 // função que gera a cor random
 function randomColor () {
     let r = Math.floor(Math.random() * 256);
     let g = Math.floor(Math.random() * 256);
     let b = Math.floor(Math.random() * 256);
-    return `rgb(${r}, ${g}, ${b})`;
+    return corStorage = `rgb(${r}, ${g}, ${b})`;
 }
 // função que muda a cor
-function changeColor () {
+function changeColor() {
     let color = document.getElementsByClassName('color');
-    for (let index = 1; index < color.length; index += 1){
+    for (let index = 1; index < color.length; index += 1) {
         color[index].style.backgroundColor = randomColor();
     }
 }
@@ -17,10 +20,11 @@ function clickButton() {
     const button = document.getElementById('button-random-color');
     button.addEventListener('click', () => {
         changeColor(true)
-    })
+    });
+    colorStorage();
 }
 // Board de Pixels
-function createBoard () {
+function createBoard() {
     let board = document.createElement('div');
     board.setAttribute('id', 'pixel-board');
     document.body.appendChild(board);
@@ -33,10 +37,21 @@ function createBoard () {
         square.setAttribute('class', 'pixel');
         board.appendChild(square);
         console.log('teste');
-    }
-
+  }
 }
 
+function loadBg () {
+    if(!localStorage.getItem('colorPalette')) {
+        colorStorage();
+    } else {
+        newColorPalette.innerHTML = localStorage.getItem('colorPalette');
+    }
+}
+
+function colorStorage() {
+    let colorPalette = document.getElementById('color-palette');
+    localStorage.setItem('colorPalette', colorPalette.innerHTML);
+}
 
 // Chamando funções
 createBoard();
