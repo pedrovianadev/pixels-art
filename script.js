@@ -38,19 +38,10 @@ function createBoard() {
     square.style.border = '1px solid black';
     square.setAttribute('class', 'pixel');
     board.appendChild(square);
-    console.log('teste');
   }
 }
 
-// function loadBg () {
-//     let colorPalette = document.getElementsByClassName('color');
-//     if(!localStorage.getItem('colorPalette')) {
-//         colorPalette.innerHTML = localStorage.getItem('color');
-//     } else {
-//         colorStorage();
-//     }
-// }
-
+// Aqui eu consegui fazer com a ajuda do Walber entendendo a lógica os requisitos 5 e 8
 function colorStorage() {
     let saveColors = ['black'];
     let colorPalette = document.getElementsByClassName('color');
@@ -68,13 +59,22 @@ function colorStorage() {
 }
 
 
-// function Paint () {
-//   let colors = document.getElementsByClassName('color');
-//   for (let index = 0; index > colors.length; index += 1) {
-//     let saveColors = colors[index].style.backgroundColor;
-//     }
+function savePalette () {
+  let colors = document.querySelector('#color-palette');
+  colors.addEventListener('click', function(event) {
+    let selected = document.querySelector('.selected');
+    selected.className = 'color';
+    event.target.className = 'color selected';
+  });
+}
 
-// }
+function paint () {
+    let pincel = document.querySelector('#pixel-board');
+    pincel.addEventListener('click', function(event) {
+        let painted = document.querySelector('.selected');
+        event.target.style.backgroundColor = painted.style.backgroundColor;
+    })
+}
 
 // Chamando funções
 createBoard();
@@ -82,3 +82,7 @@ createBoard();
 clickButton();
 
 colorStorage();
+
+savePalette();
+
+paint();
