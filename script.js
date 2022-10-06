@@ -104,6 +104,15 @@ function paint () {
     })
 }
 
+function clearBoard () {
+    let clear = document.querySelector('#clear-board');
+    clear.addEventListener('click', function(){
+        let pixel = document.querySelectorAll('.pixel');
+        for (let index = 0; index < pixel.length; index += 1){
+            pixel[index].style.backgroundColor = 'white';
+        }
+    })
+}
 // Chamando funções
 makePalette();
 
@@ -120,3 +129,5 @@ colorStorage();
 savePalette();
 
 paint();
+
+clearBoard();
