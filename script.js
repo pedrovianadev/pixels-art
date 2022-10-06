@@ -1,15 +1,43 @@
+function makePalette () {
+    let father = document.getElementById('color-palette');
+    for (let index = 0; index < 4; index += 1) {
+        let colorPalette = document.createElement('div');
+        colorPalette.className = 'color';
+        colorPalette.style.display = 'inline-block';
+        colorPalette.style.margin = 'auto';
+        colorPalette.style.border = '1px solid black';
+        colorPalette.style.width = '60px';
+        colorPalette.style.height = '60px';
+        colorPalette.style.boxShadow = '2px 5px 10px';
+        colorPalette.style.borderRadius = '50%';
+        father.appendChild(colorPalette);
+
+    }
+}
+
+function divBlack () {
+    let father = document.getElementById('color-palette');
+        father.firstChild.className = 'color selected';
+        father.firstChild.style.backgroundColor = 'black';
+        father.firstChild.style.display = 'inline-block';
+        father.firstChild.style.margin = 'auto';
+}
+
 // função que gera a cor random
 function randomColor () {
   let r = Math.floor(Math.random() * 256);
   let g = Math.floor(Math.random() * 256);
   let b = Math.floor(Math.random() * 256);
-  return corStorage = `rgb(${r}, ${g}, ${b})`;
+  return `rgb(${r}, ${g}, ${b})`;
 }
 // função que muda a cor
 function changeColor() {
   let color = document.getElementsByClassName('color');
   for (let index = 1; index < color.length; index += 1) {
     color[index].style.backgroundColor = randomColor();
+    if (color[index].style.backgroundColor === 'rgb(255, 255, 255)') {
+        color[index].style.backgroundColor = randomColor();
+    }
   }
 }
 // função do evento do click
@@ -77,6 +105,12 @@ function paint () {
 }
 
 // Chamando funções
+makePalette();
+
+divBlack();
+
+changeColor();
+
 createBoard();
 
 clickButton();
